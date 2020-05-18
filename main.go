@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"go-task-executor/executor"
-	"go-task-executor/interfaces"
-	"go-task-executor/task/sampletask"
+	"github.com/harshitandro/go-task-executor/executor"
+	"github.com/harshitandro/go-task-executor/interfaces"
+	"github.com/harshitandro/go-task-executor/task/sampletask"
 	"math"
 	"sync"
 	"time"

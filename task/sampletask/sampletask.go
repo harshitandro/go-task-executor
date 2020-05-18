@@ -1,7 +1,7 @@
 package sampletask
 
 import (
-	"go-task-executor/interfaces"
+	"github.com/harshitandro/go-task-executor/interfaces"
 	"sync"
 	"time"
 )

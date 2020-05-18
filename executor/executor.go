@@ -2,7 +2,7 @@ package executor
 
 import (
 	"fmt"
-	"go-task-executor/interfaces"
+	"github.com/harshitandro/go-task-executor/interfaces"
 	"runtime"
 	"sync"
 	"time"
