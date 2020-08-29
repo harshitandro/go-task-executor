@@ -1,6 +1,24 @@
+/*
+ * Copyright 2020 Harshit Singh Lodha
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package sampletask
 
 import (
+	"crypto/sha256"
+	"fmt"
 	"github.com/harshitandro/go-task-executor/interfaces"
 	"sync"
 	"time"
@@ -62,7 +80,7 @@ func (s *sampleTask) Execute() {
 	}()
 	defer func() { s.done = true }()
 	defer s.setCompletionTimeNano(time.Now().UnixNano())
-	x := int64(0)
+	var x [32]byte
 	cpuIntensive(&x, s.data)
 	s.result = x
 }
@@ -76,8 +94,8 @@ func New(waitGroup *sync.WaitGroup, data int64) interfaces.Task {
 	return task
 }
 
-func cpuIntensive(p *int64, data int64) {
+func cpuIntensive(p *[32]byte, data int64) {
 	for i := int64(1); i <= data; i++ {
-		*p = i
+		*p = sha256.Sum256([]byte(fmt.Sprintf("hello : %s")))
 	}
 }
