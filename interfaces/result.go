@@ -16,5 +16,10 @@
 
 package interfaces
 
+/*
+	The wildcard interface for storing the result of the task execution.
+	Each task implementation is independent to have whatever internal data structure they want
+	to use for storing the result of task execution.
+*/
 type Result interface {
 }
